@@ -56,7 +56,7 @@ def populate_board(board):
             _x = random_point(board.size)
             _y = random_point(board.size)
             if(_x, _y) in board.ships:
-                print(f"{_x, _y} exists")
+                print("")
             else:
                 board.add_ship(_x, _y)
                 if len(board.ships) == 4:
@@ -129,19 +129,21 @@ def play_game(player_board, computer_board):
                     if scores["player"] == computer_board.num_ships:
                         print(f"{player_board.player_name} Won\n")
                         computer_board.battle_board()
-                        break
+                        new_game()
                     if scores["computer"] == player_board.num_ships:
                         print("Computer Won\n")
                         player_board.battle_board()
-                        break
+                        new_game()
                     inputt = input("enter any key to continue or n to quit")
                     if inputt == "n":
                         new_game()
-                    print(f"\n{player_board.player_name}'s board: ")
-                    player_board.battle_board()
-                    print("computer's board: ")
-                    computer_board.battle_board()
-                    print("\n")
+                    else:
+                        print(f"\n{player_board.player_name}'s board: ")
+                        player_board.battle_board()
+                        print("computer's board: ")
+                        computer_board.battle_board()
+                        print("\n")
+                    
 
 
 def new_game():
